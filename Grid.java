@@ -6,9 +6,9 @@ import java.awt.Point;
 
 public abstract class Grid {
   
-	protected double[][] _points;
-	protected double _ß = 1;
-	protected int _D;
+	protected double[][] _points; 
+	protected double _ß = 1; // Inverse temperature
+	protected int _D; // Dimension of the grid
 	
 	public double getß(){
 		return _ß;
@@ -16,7 +16,7 @@ public abstract class Grid {
 	public void setß(double ß){
 		_ß = ß;
 	}
-	public Point getRandomPosition(){
+	public Point getRandomPosition(){ 
 		int  x = (int)Math.round( (Math.random()*(_D)) - .5 );
 		int  y = (int)Math.round( (Math.random()*(_D)) - .5 );
 		
@@ -38,5 +38,5 @@ public abstract class Grid {
 	public abstract double getMagnetization();
 	public abstract double getHamiltonian();
 	
-	public abstract Grid getBlockedGrid();
+	public abstract Grid getBlockedGrid(); // Returns a new grid of smaller dimension whose configuration is determined by this Grid via a specified blocking procedure. This allows for the determination of scaling laws and renormalization group flow on the statistical system.
 }
